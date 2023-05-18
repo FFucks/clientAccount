@@ -1,0 +1,35 @@
+spring:
+  mvc:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: GET, POST, PATCH, PUT, DELETE
+      allowed-headers: "*"
+  main:
+    allow-bean-definition-overriding: true
+  restTemplate:
+    messageConverters:
+      - jackson
+      - xml
+    requestFactory:
+      timeout: 5000
+  datasource:
+    url: jdbc:postgresql://localhost:5432/client
+    username: postgres
+    password: admin123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: trace
+
+server:
+  ipv4-stack: true
+  address: localhost
+  port: 8081
